@@ -3,22 +3,9 @@ import { useState, useEffect } from 'react';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMassage from '../errorMassage/ErrorMassage';
-import SingleComic from '../singleComic/SingleComic';
+
 
 const ComicsList = () => {
-    const [triger, setTriger] = useState(true)
-    
-    const setListOrSingle = () =>{
-        setTriger(!triger)
-    }
-    return(
-        <>
-           {triger ? <Comics setListOrSingle={setListOrSingle}/> : <SingleComic setListOrSingle={setListOrSingle}/>}
-        </>
-    )
-}
-
-const Comics = (props) => {
 
     const[comicsList, setComicsList] = useState([]);
     const[newItemLoading, setNewItemLoading] = useState(false);
@@ -60,7 +47,6 @@ const Comics = (props) => {
             
             return (
                 <li className="comics__item"
-                onClick={props.setListOrSingle}
                 key={item.id}>   
                     <a href="#">
                         <img src={item.thumbnail} alt={item.title} className="comics__item-img"/>

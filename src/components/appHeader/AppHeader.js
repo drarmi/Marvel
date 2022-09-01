@@ -1,31 +1,25 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import {Link, NavLink} from 'react-router-dom';
 import './appHeader.scss';
 
-
-const AppHeader = (props) => {
-
+const AppHeader = () => {
     return (
         <header className="app__header">
-            <h1 className="app__title">                
-                <a href="#">
+            <h1 className="app__title">
+                <Link to="/">
                     <span>Marvel</span> information portal
-                </a>
+                </Link>
             </h1>
             <nav className="app__menu">
                 <ul>
-                    <li>
-                        <input
-                        onClick={props.onCharOrComics} 
-                        type='button'
-                        value='Characters'/>
-                    </li>
+                    {/* NavLink 
+                        end 
+                        style={({ isActive }) => ({color: isActive ? '#9f0013' : 'inherit'})} 
+                        to="/">Characters</NavLink></li> 
+                        в NavLink убрали атрибут exact и activeStyle
+                    */}
+                    <li><NavLink exact activeStyle={{'color': '#9f0013'}} to="/">Characters</NavLink></li>
                     /
-                    <li>
-                        <input 
-                        onClick={props.onCharOrComics}
-                        type='button'
-                        value='Comics'/>
-                    </li>
+                    <li><NavLink exact activeStyle={{'color': '#9f0013'}} to="/comics">Comics</NavLink></li>
                 </ul>
             </nav>
         </header>
@@ -33,3 +27,4 @@ const AppHeader = (props) => {
 }
 
 export default AppHeader;
+
