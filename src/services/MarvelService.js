@@ -31,10 +31,11 @@ const useMarvelService = () => {
             id: comics.id,
             title: comics.title,
             thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension,
-            price: comics.prices[0].price,
-            url: comics.urls[0].url,
-            description: comics.description,
-            language: comics.textObjects[0].language,
+            url: comics.urls[0].url, 
+            description: comics.description || 'There is no description',
+            pageCount: comics.pageCount ? `${comics.pageCount} p.` : 'No information about the number of pages',    
+            language: comics.textObjects.language || 'en-us',
+            price: comics.prices[0].price ? `${comics.prices[0].price}$` : 'not available'
         }
     }
 
